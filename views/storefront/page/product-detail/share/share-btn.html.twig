@@ -1,18 +1,16 @@
-
-
+{% if controllerName|lower == "product" %}
+{% set id = page.product.id %}
+{% endif %}
+{% if id is not empty %}
     <span class="dropdown share-dropdown">
-    {% if controllerName|lower == "product" %}
-    {% set id = page.product.id %}
-    {% endif %}
-    
-    <button class="dropdown-toggle btn" type="button" id="share-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    {% sw_icon 'share' %}
-	</button>
-    <div class="dropdown-menu" aria-labelledby="share-button">
-    {% if id is not empty %}
-        <a href="http://www.twitter.com/share?url={{ seoUrl('frontend.detail.page', {'productId': id}) }}" />Twitter</a> | 
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ seoUrl('frontend.detail.page', {'productId': id}) }}">Facebook</a> | 
-        <a href="mailto:?body={{ seoUrl('frontend.detail.page', {'productId': id}) }}" />E-Mail</a>
-    {% endif %}
-    </div>
+        <button class="dropdown-toggle btn" type="button" id="share-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% sw_icon 'share' %}
+        </button>
+
+        <div class="dropdown-menu" aria-labelledby="share-button">
+            <a href="http://www.twitter.com/share?url={{ seoUrl('frontend.detail.page', {'productId': id}) }}" />Twitter</a> | 
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ seoUrl('frontend.detail.page', {'productId': id}) }}">Facebook</a> | 
+            <a href="mailto:?body={{ seoUrl('frontend.detail.page', {'productId': id}) }}" />E-Mail</a>
+        </div>
     </span>
+{% endif %}
